@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using AnalizerClass;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -28,6 +29,9 @@ namespace Calculator
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             textBoxExample.Text += (sender as Button).Content;
+
+            if ((sender as Button).Content.ToString() == "=")
+                Calculate();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -38,6 +42,11 @@ namespace Calculator
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             textBoxExample.Text = textBoxExample.Text.Remove(textBoxExample.Text.Length - 1);
+        }
+
+        private void Calculate()
+        {
+            textBoxExample.Text = Analizer.Calculate(textBoxExample.Text).ToString();
         }
     }
 }
