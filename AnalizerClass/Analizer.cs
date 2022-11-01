@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cacl;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,11 +97,10 @@ namespace AnalizerClass
 
                     switch (input[i])
                     {
-                        case '+': result = b + a; break;
-                        case '-': result = b - a; break;
-                        case '*': result = b * a; break;
-                        case '/': result = b / a; break;
-                        case '^': result = double.Parse(Math.Pow(double.Parse(b.ToString()), double.Parse(a.ToString())).ToString()); break;
+                        case '+': result = Calcu.Sum(b, a); break;
+                        case '-': result = Calcu.Min(b, a); break;
+                        case '*': result = Calcu.Mul(b, a); break;
+                        case '/': result = Calcu.Div(b, a); break;
                     }
                     temp.Push(result);
                 }
