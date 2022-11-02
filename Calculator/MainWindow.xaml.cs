@@ -28,10 +28,14 @@ namespace Calculator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            textBoxExample.Text += (sender as Button).Content;
+            string content = (sender as Button).Content.ToString();
 
-            if ((sender as Button).Content.ToString() == "=")
+            if (content == "=")
                 Calculate();
+            else if (content == "+/-")
+                NumberInversion();
+            else
+                textBoxExample.Text += content;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -47,6 +51,20 @@ namespace Calculator
         private void Calculate()
         {
             textBoxExample.Text = Analizer.Calculate(textBoxExample.Text).ToString();
+        }
+        private void NumberInversion()
+        {
+            if(textBoxExample.Text != String.Empty)
+            {
+                int length = textBoxExample.Text.Split(new char[] { ' ', '+', '*', '/' }).Length;
+                if (length == 1)
+                {
+                    if (textBoxExample.Text[0] != '-')
+                        textBoxExample.Text = textBoxExample.Text.Insert(0, "-");
+                    else
+                        textBoxExample.Text = textBoxExample.Text.Remove(0, 1);
+                }
+            }
         }
     }
 }
