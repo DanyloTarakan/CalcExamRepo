@@ -24,5 +24,9 @@ namespace Cacl
         {
             return a * b;
         }
+        public static double Mod(double a, double b)
+        {
+            return a % b;
+        }
     }
 }

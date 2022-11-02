@@ -101,6 +101,7 @@ namespace AnalizerClass
                         case '-': result = Calcu.Min(b, a); break;
                         case '*': result = Calcu.Mul(b, a); break;
                         case '/': result = Calcu.Div(b, a); break;
+                        case '%': result = Calcu.Mod(b, a); break;
                     }
                     temp.Push(result);
                 }
@@ -115,7 +116,7 @@ namespace AnalizerClass
         }
         static private bool IsOperator(char с)
         {
-            if (("+-/*^()".IndexOf(с) != -1))
+            if (("+-/*%()".IndexOf(с) != -1))
                 return true;
             return false;
         }
@@ -129,8 +130,8 @@ namespace AnalizerClass
                 case '-': return 3;
                 case '*': return 4;
                 case '/': return 4;
-                case '^': return 5;
-                default: return 6;
+                case '%': return 4;
+                default: return 5;
             }
         }
     }

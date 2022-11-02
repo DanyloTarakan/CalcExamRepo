@@ -34,6 +34,8 @@ namespace Calculator
                 Calculate();
             else if (content == "+/-")
                 NumberInversion();
+            else if (content == "mod")
+                textBoxExample.Text += "%";
             else
                 textBoxExample.Text += content;
         }
