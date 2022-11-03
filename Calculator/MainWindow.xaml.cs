@@ -49,10 +49,29 @@ namespace Calculator
         {
             textBoxExample.Text = textBoxExample.Text.Remove(textBoxExample.Text.Length - 1);
         }
-
+        double numberRes,numberM=0;
         private void Calculate()
         {
-            textBoxExample.Text = Analizer.Calculate(textBoxExample.Text).ToString();
+            numberRes = Analizer.Calculate(textBoxExample.Text);
+            textBoxExample.Text = numberRes.ToString();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            numberM = numberRes;
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            numberM = 0;
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            char c = textBoxExample.Text.Last();
+            if (c == '*' || c == '+' || c == '-' || c == '/')
+                textBoxExample.Text += numberM.ToString();
+
         }
         private void NumberInversion()
         {

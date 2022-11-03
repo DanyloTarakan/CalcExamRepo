@@ -75,12 +75,12 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <!--Row 0-->
-                <Button Margin="2,2,2,2" Grid.Column="0" Grid.Row="0" FontSize="26" Background="#FF131313" Foreground="White">
+                <Button Click="Button_Click_3" Margin="2,2,2,2" Grid.Column="0" Grid.Row="0" FontSize="26" Background="#FF131313" Foreground="White">
                     <Button.BorderBrush>
                         <ImageBrush/>
                     </Button.BorderBrush> M+
                 </Button>
-                <Button Margin="2,2,2,2" Grid.Column="1" Grid.Row="0" FontSize="26" Background="#FF131313" Foreground="White">
+                <Button Click="Button_Click_5" Margin="2,2,2,2" Grid.Column="1" Grid.Row="0" FontSize="26" Background="#FF131313" Foreground="White">
                     <Button.BorderBrush>
                         <ImageBrush/>
                     </Button.BorderBrush> MR
@@ -92,7 +92,7 @@
                 </Button>
 
                 <!--Row 1-->
-                <Button Margin="2,2,2,2" Grid.Column="0" Grid.Row="1" FontSize="26" Background="#FF131313" Foreground="White">
+                <Button Click="Button_Click_4" Margin="2,2,2,2" Grid.Column="0" Grid.Row="1" FontSize="26" Background="#FF131313" Foreground="White">
                     <Button.BorderBrush>
                         <ImageBrush/>
                     </Button.BorderBrush> MC
