@@ -4,6 +4,7 @@ using Cacl;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AnalizerClass
 {
@@ -11,15 +12,22 @@ namespace AnalizerClass
     {
         static public double Calculate(string input)
         {
-            string output = GetExpression(input);
-            double result = Counting(output);
-            return result;
+            try
+            {
+                string output = GetExpression(input);
+                double result = Counting(output);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine((ex.Message));
+                return 0;
+            }
         }
         static private string GetExpression(string input)
         {
             string output = string.Empty;
             Stack<char> operStack = new Stack<char>();
-
             for (int i = 0; i < input.Length; i++)
             {
                 if (IsDelimeter(input[i]))
@@ -65,8 +73,18 @@ namespace AnalizerClass
                 }
             }
 
+
+
             while (operStack.Count > 0)
                 output += operStack.Pop() + " ";
+
+            if (output.Split(' ').Length > 30)
+                throw (new Exception("Error08"));
+
+            if (output.Length > 65536)
+                throw (new Exception("Error07"));
+
+
 
             return output;
         }
