@@ -20,7 +20,7 @@ namespace AnalizerClass
             }
             catch (Exception ex)
             {
-                Console.WriteLine((ex.Message));
+                MessageBox.Show(ex.Message);
                 return 0;
             }
         }
@@ -46,9 +46,14 @@ namespace AnalizerClass
                     output += " ";
                     i--;
                 }
-
-                if (IsOperator(input[i]))
+                else if (IsOperator(input[i]))
                 {
+                    if (i != 0)
+                    {
+                        if (IsOperator(input[i - 1]) && !IsPriorityOperator(input[i - 1]) && !IsPriorityOperator(input[i]))
+                            throw (new Exception($"Two consecutive operators on the <{i}> character"));
+                    }
+
                     if (input[i] == '(')
                         operStack.Push(input[i]);
                     else if (input[i] == ')')
@@ -71,20 +76,23 @@ namespace AnalizerClass
 
                     }
                 }
+                else
+                {
+                    throw (new Exception($"Unknown operator on <{i}> character"));
+                }
             }
-
-
 
             while (operStack.Count > 0)
                 output += operStack.Pop() + " ";
 
             if (output.Split(' ').Length > 30)
-                throw (new Exception("Error08"));
+                throw (new Exception("The total number of numbers and operators exceeds 30"));
 
             if (output.Length > 65536)
-                throw (new Exception("Error07"));
+                throw (new Exception("A very long expression. The maximum length is 65536 characters"));
 
-
+            if (output.Contains('(') || output.Contains(')'))
+                throw (new Exception("Incorrect structure in parentheses"));
 
             return output;
         }
@@ -110,18 +118,26 @@ namespace AnalizerClass
                 }
                 else if (IsOperator(input[i]))
                 {
-                    double a = temp.Pop();
-                    double b = temp.Pop();
-
-                    switch (input[i])
+                    try
                     {
-                        case '+': result = Calcu.Sum(b, a); break;
-                        case '-': result = Calcu.Min(b, a); break;
-                        case '*': result = Calcu.Mul(b, a); break;
-                        case '/': result = Calcu.Div(b, a); break;
-                        case '%': result = Calcu.Mod(b, a); break;
+                        double a = temp.Pop();
+                        double b = temp.Pop();
+
+                        switch (input[i])
+                        {
+                            case '+': result = Calcu.Sum(b, a); break;
+                            case '-': result = Calcu.Min(b, a); break;
+                            case '*': result = Calcu.Mul(b, a); break;
+                            case '/': result = Calcu.Div(b, a); break;
+                            case '%': result = Calcu.Mod(b, a); break;
+                        }
+                        temp.Push(result);
                     }
-                    temp.Push(result);
+                    catch
+                    {
+                        throw (new Exception("An incomplete expression"));
+                    }
+
                 }
             }
             return temp.Peek();
@@ -132,9 +148,15 @@ namespace AnalizerClass
                 return true;
             return false;
         }
-        static private bool IsOperator(char с)
+        static private bool IsOperator(char c)
         {
-            if (("+-/*%()".IndexOf(с) != -1))
+            if (("+-/*%()".IndexOf(c) != -1))
+                return true;
+            return false;
+        }
+        static private bool IsPriorityOperator(char c)
+        {
+            if (("()".IndexOf(c) != -1))
                 return true;
             return false;
         }
