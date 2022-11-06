@@ -30,14 +30,21 @@ namespace Calculator
         {
             string content = (sender as Button).Content.ToString();
 
-            if (content == "=")
-                Calculate();
-            else if (content == "+/-")
-                NumberInversion();
-            else if (content == "mod")
-                textBoxExample.Text += "%";
-            else
-                textBoxExample.Text += content;
+            try
+            {
+                if (content == "=")
+                    Calculate();
+                else if (content == "+/-")
+                    NumberInversion();
+                else if (content == "mod")
+                    textBoxExample.Text += "%";
+                else
+                    textBoxExample.Text += content;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

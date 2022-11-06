@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cacl", "Cacl\Cacl.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaclTest", "CaclTest\CaclTest.csproj", "{78EA04C8-6A88-4304-B906-87D81D3CCD14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalizerTest", "AnalizerTest\AnalizerTest.csproj", "{A6B12C9E-AFC6-473A-B426-1C7AFEBA4C8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{78EA04C8-6A88-4304-B906-87D81D3CCD14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78EA04C8-6A88-4304-B906-87D81D3CCD14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78EA04C8-6A88-4304-B906-87D81D3CCD14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6B12C9E-AFC6-473A-B426-1C7AFEBA4C8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6B12C9E-AFC6-473A-B426-1C7AFEBA4C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6B12C9E-AFC6-473A-B426-1C7AFEBA4C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6B12C9E-AFC6-473A-B426-1C7AFEBA4C8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

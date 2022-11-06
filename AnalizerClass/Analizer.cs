@@ -4,7 +4,6 @@ using Cacl;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace AnalizerClass
 {
@@ -12,17 +11,9 @@ namespace AnalizerClass
     {
         static public double Calculate(string input)
         {
-            try
-            {
-                string output = GetExpression(input);
-                double result = Counting(output);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return 0;
-            }
+            string output = GetExpression(input);
+            double result = Counting(output);
+            return result;
         }
         static private string GetExpression(string input)
         {
